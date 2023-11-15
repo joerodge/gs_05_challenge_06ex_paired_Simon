@@ -1,11 +1,19 @@
 from lib.tasks import *
 import pytest
-# Tests for Task class
 
-# Tests for __init__
+### Tests for Task class ###
+
+## Tests for __init__ 
+
+"""Test the initial creation of the Task object. Tasks should be
+initialised to empty dict"""
 def test_tasks_class_init():
     task = Task()
     assert task.tasks == {}
+
+
+
+## Tests for .add_task()
 
 """Test for adding a task is correct"""
 def test_add_task():
@@ -35,7 +43,8 @@ def test_add_task_title_or_decription_is_nothing():
     assert str(e.value) == "Title or description can't be empty"
 
 
-# Tests for .completed()
+
+## Tests for .completed()
 
 """Test adding task to dict and then removing it and seeing
 if dict is empty"""
@@ -62,7 +71,9 @@ def test_completed_does_nothing_if_task_title_doesnt_exist():
     assert task.tasks == {"Write essay": "Complete essay for history project on Vietnam War"}
 
 
-# Tests for .list_tasks()
+
+## Tests for .list_tasks()
+
 """Test when one task is added then the output is that one thing
 formatted as a string {title: descrition}"""
 def test_list_tasks_one_task_added():
@@ -70,7 +81,6 @@ def test_list_tasks_one_task_added():
     task.add_task("Write essay", "Complete essay for history project on Vietnam War")
     result = task.list_tasks()
     assert result == "Write essay: Complete essay for history project on Vietnam War"
-
 
 """Test when muliple tasks have been added then list_tasks lists them
 all formatted in a newline"""
